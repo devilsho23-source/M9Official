@@ -242,9 +242,47 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
 <script>
 const KEY='m9off_v3';
 const DEF={password:'admin123',brand:'M9 Official',ticker:'🟢 M9 Official APP - အခမဲ့ Download လုပ်နိုင်ပါသည် | Android & iOS | Live Casino | Slot Games | Viber & Telegram ဆက်သွယ်ရန် 🟢',footer:'Copyright © 2026 M9 Official | m9asia.com | m9skm.com',badge:'🟢 Official Version Available',hmain:'M9 Official APP',hsub:'Free Download — Latest Version',hdesc:'Android & iOS | m9asia.com | m9skm.com',siteTitle:'M9 Official APP - Free Download',a1t:'📱 m9asia.com Download',a1l:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',a2t:'📲 m9skm.com Download',a2l:'https://www.m9skm.com/down/index.html',iot:'🍎 iOS Install Guide',iol:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',vbt:'💬 Viber ဆက်သွယ်ရန်',vbl:'https://cutt.ly/m9official',tgt:'✈ Telegram ဆက်သွယ်ရန်',tgl:'http://t.me/M9official_bot',pht:'📞 +95 9400082168',phl:'tel:+959400082168',slides:[],p1t:'Welcome Bonus 100%',p1d:'အသစ်ဝင်ရောက်သူများအတွက် First Deposit 100% Bonus ရယူနိုင်ပါသည်',p1l:'https://cutt.ly/m9official',p2t:'Daily Reload Bonus',p2d:'နေ့တိုင်း Deposit လုပ်သောအခါ Extra Bonus ရယူနိုင်ပါသည်',p2l:'https://cutt.ly/m9official',p3t:'Commission',p3d:'0.9% ကော်မရှင် မများမားနဲ့ဆော်ကြမယ်',p3l:'https://cutt.ly/m9official',p4t:'Sunday Bonus',p4d:'Happy Sunday! FREE 50,000 ကြိုဆိုပါသည်',p4l:'https://cutt.ly/m9official'};
-function ld(){try{const r=localStorage.getItem(KEY);return r?Object.assign({},DEF,JSON.parse(r)):Object.assign({},DEF);}catch(e){return Object.assign({},DEF);}}
-function sv(d){localStorage.setItem(KEY,JSON.stringify(d));}
-let D=ld();
+const BIN_ID='69bce148aa77b81da9ffbacb';
+const API_KEY='$2a$10$iYINUUnFmE6kd0d/btMi0e8.AxtvrNP78UaZKyaG5hu9zMvHXQZ02';
+const BIN_URL='https://api.jsonbin.io/v3/b/'+BIN_ID;
+
+let D=Object.assign({},DEF);
+let _saving=false;
+
+async function ld(){
+  try{
+    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});
+    if(r.ok){
+      const j=await r.json();
+      const data=j.record;
+      if(data&&Object.keys(data).length>1){
+        D=Object.assign({},DEF,data);
+      } else {
+        D=Object.assign({},DEF);
+      }
+    }
+  }catch(e){
+    const local=localStorage.getItem(KEY);
+    if(local) D=Object.assign({},DEF,JSON.parse(local));
+  }
+  renderPage();
+  loadF&&typeof loadF==='function'&&li&&loadF();
+}
+
+async function sv(d){
+  if(_saving)return;
+  _saving=true;
+  D=d;
+  localStorage.setItem(KEY,JSON.stringify(d));
+  try{
+    await fetch(BIN_URL,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},
+      body:JSON.stringify(d)
+    });
+  }catch(e){console.log('Save error',e);}
+  _saving=false;
+}
 function tx(id,val){const e=document.getElementById(id);if(e)e.textContent=val;}
 function sb(id,t,h){const e=document.getElementById(id);if(!e)return;e.textContent=t;e.href=h;}
 function g(id){return document.getElementById(id)?document.getElementById(id).value:'';}
@@ -344,6 +382,6 @@ function renderSlider(){
 }
 function go(n){document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n));document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n));si=n;}
 function loadF(){sf('f-stitle',D.siteTitle);sf('f-brand',D.brand);sf('f-ticker',D.ticker);sf('f-badge',D.badge);sf('f-hmain',D.hmain);sf('f-hsub',D.hsub);sf('f-hdesc',D.hdesc);sf('f-footer',D.footer);sf('f-a1t',D.a1t);sf('f-a1l',D.a1l);sf('f-a2t',D.a2t);sf('f-a2l',D.a2l);sf('f-iot',D.iot);sf('f-iol',D.iol);sf('f-vbt',D.vbt);sf('f-vbl',D.vbl);sf('f-tgt',D.tgt);sf('f-tgl',D.tgl);sf('f-pht',D.pht);sf('f-phl',D.phl);sf('f-p1t',D.p1t);sf('f-p1d',D.p1d);sf('f-p1l',D.p1l);sf('f-p2t',D.p2t);sf('f-p2d',D.p2d);sf('f-p2l',D.p2l);sf('f-p3t',D.p3t);sf('f-p3d',D.p3d);sf('f-p3l',D.p3l);}
-renderPage();
+ld();
 </script>
 </body></html>
