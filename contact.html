@@ -224,6 +224,14 @@ let D=Object.assign({},DEF);
 let _saving=false;
 
 async function ld(){
+  // Try localStorage first (fast & reliable)
+  try{
+    const local=localStorage.getItem(KEY);
+    if(local){const parsed=JSON.parse(local);if(parsed&&Object.keys(parsed).length>1)D=Object.assign({},DEF,parsed);}
+  }catch(e){}
+  renderPage();
+  loadF&&typeof loadF==='function'&&li&&loadF();
+  // Then try JSONBin in background & update if newer
   try{
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});
     if(r.ok){
@@ -231,16 +239,14 @@ async function ld(){
       const data=j.record;
       if(data&&Object.keys(data).length>1){
         D=Object.assign({},DEF,data);
-      } else {
-        D=Object.assign({},DEF);
+        localStorage.setItem(KEY,JSON.stringify(D));
+        renderPage();
+        loadF&&typeof loadF==='function'&&li&&loadF();
       }
     }
-  }catch(e){
-    const local=localStorage.getItem(KEY);
-    if(local) D=Object.assign({},DEF,JSON.parse(local));
-  }
-  renderPage();
-  loadF&&typeof loadF==='function'&&li&&loadF();
+  }catch(e){console.log('JSONBin offline, using localStorage');}
+  return;
+  // (old code below - replaced)
 }
 
 async function sv(d){
