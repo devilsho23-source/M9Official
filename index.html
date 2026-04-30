@@ -284,7 +284,7 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
 <!-- ADMIN PANEL -->
 <div class="ao" id="ao">
   <div class="ap">
-    <div class="ah"><h2>⚙ Admin Panel</h2><button class="ac-btn" onclick="closeAdmin()">✕</button></div>
+    <div class="ah"><h2>⚙ Admin Panel</h2><div style="display:flex;align-items:center;gap:8px;"><span id="jb-status" style="font-size:0.7rem;padding:3px 8px;border-radius:10px;background:#eee;color:#888;">🔄 Connecting...</span><button class="ac-btn" onclick="closeAdmin()">✕</button></div></div>
     <div class="alog" id="alog">
       <p>Admin Password ထည့်ပါ</p>
       <input type="password" id="apw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"><br>
@@ -415,7 +415,7 @@ async function syncFromServer(force){
         // Only apply server data if it's newer than local data (using _v timestamp)
         const localV=D._v||0;
         const serverV=data._v||0;
-        if(!force && serverV < localV) return; // Server is behind local — skip
+        if(serverV < localV && localV > 0) return; // Server is behind local — skip
         D=Object.assign({},DEF,data);
         localStorage.setItem(KEY,JSON.stringify(D));
         renderPage();
@@ -425,36 +425,32 @@ async function syncFromServer(force){
 }
 
 async function sv(d){
-  if(_saving)return;
+  if(_saving) return false;
   _saving=true;
   _lastSaveTime=Date.now();
-  // Add save version timestamp to data
-  d._v=_lastSaveTime;
   D=d;
   localStorage.setItem(KEY,JSON.stringify(d));
-  // Retry PUT up to 4 times until verified
-  let verified=false;
-  for(let attempt=0;attempt<4&&!verified;attempt++){
-    try{
-      if(attempt>0) await new Promise(r=>setTimeout(r,2000*attempt));
-      const putR=await fetch(BIN_URL,{
-        method:'PUT',
-        headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},
-        body:JSON.stringify(d)
-      });
-      if(!putR.ok) continue;
-      // Wait then verify GET returns new data
-      await new Promise(r=>setTimeout(r,1500));
-      const getR=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});
-      if(getR.ok){
-        const j=await getR.json();
-        // Verify server has our version
-        if(j.record&&j.record._v===d._v) verified=true;
-      }
-    }catch(e){console.log('Save attempt '+(attempt+1)+' failed:',e);}
+  let success=false;
+  try{
+    const r=await fetch(BIN_URL,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},
+      body:JSON.stringify(d)
+    });
+    success=r.ok;
+    if(!r.ok){
+      const txt=await r.text();
+      console.error('JSONBin PUT failed:',r.status,txt);
+      setJbStatus(false,'❌ '+r.status+' '+r.statusText);
+    } else {
+      setJbStatus(true,'✅ Synced');
+    }
+  }catch(e){
+    console.error('JSONBin error:',e);
+    setJbStatus(false,'❌ Network error');
   }
-  if(!verified) console.warn('JSONBin save could not be verified after 4 attempts');
   _saving=false;
+  return success;
 }
 function tx(id,val){const e=document.getElementById(id);if(e)e.textContent=val;}
 function sb(id,t,h){const e=document.getElementById(id);if(!e)return;if(!e.querySelector('img')){e.textContent=t;}e.href=h;}
@@ -470,6 +466,31 @@ function renderBase(){
 }
 // admin
 let li=false;
+function setJbStatus(ok,msg){
+  const s=document.getElementById('jb-status');
+  if(!s) return;
+  s.textContent=msg;
+  s.style.background=ok?'#d4edda':'#f8d7da';
+  s.style.color=ok?'#155724':'#721c24';
+}
+async function testJbConnection(){
+  setJbStatus(null,'🔄 Connecting...');
+  document.getElementById('jb-status').style.background='#fff3cd';
+  document.getElementById('jb-status').style.color='#856404';
+  try{
+    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});
+    if(r.ok){
+      const j=await r.json();
+      const hasPw=j.record&&j.record.password;
+      setJbStatus(true,'✅ Connected'+(hasPw?' | PW: '+j.record.password.substring(0,3)+'***':''));
+    } else {
+      const txt=await r.text();
+      setJbStatus(false,'❌ '+r.status+': '+txt.substring(0,40));
+    }
+  }catch(e){
+    setJbStatus(false,'❌ '+e.message);
+  }
+}
 function openAdmin(){
   document.getElementById('ao').classList.add('open');
   // Always show password screen every open — ဖွင့်တိုင်း password မေးမယ်
@@ -478,6 +499,7 @@ function openAdmin(){
   document.getElementById('apw').value='';
   document.getElementById('aerr').textContent='';
   setTimeout(()=>document.getElementById('apw').focus(),80);
+  testJbConnection(); // Auto-test on open
 }
 function closeAdmin(){
   document.getElementById('ao').classList.remove('open');
@@ -592,7 +614,25 @@ function saveBnr(){
   D.slides=newSlides.filter(Boolean);
   sv(D);renderPage();flash('st-bnr');
 }
-function changePw(){const o=g('f-opw'),n=g('f-npw'),c=g('f-cpw'),err=document.getElementById('pwerr');if(o!==D.password){err.textContent='❌ Current password မှားနေသည်';return;}if(n.length<6){err.textContent='❌ Password ၆ လုံးနဲ့အထက်';return;}if(n!==c){err.textContent='❌ Password မတူညီပါ';return;}D.password=n;sv(D);err.textContent='';['f-opw','f-npw','f-cpw'].forEach(id=>document.getElementById(id).value='');flash('st-pw');}
+async function changePw(){
+  const o=g('f-opw'),n=g('f-npw'),conf=g('f-cpw'),err=document.getElementById('pwerr');
+  if(o!==D.password){err.textContent='❌ Current password မှားနေသည်';return;}
+  if(n.length<6){err.textContent='❌ Password ၆ လုံးနဲ့အထက်ဖြစ်ရမည်';return;}
+  if(n!==conf){err.textContent='❌ Password မတူညီပါ';return;}
+  err.textContent='⏳ Saving...';
+  D.password=n;
+  const ok=await sv(D);
+  if(ok){
+    err.textContent='';
+    ['f-opw','f-npw','f-cpw'].forEach(id=>document.getElementById(id).value='');
+    flash('st-pw');
+    setJbStatus(true,'✅ Password saved!');
+  } else {
+    D.password=o; // revert if save failed
+    err.textContent='❌ Server မှာ save မဝင်ဘူး — JSONBin စစ်ပါ';
+    setJbStatus(false,'❌ Save failed');
+  }
+}
 </script>
 <script>
 // Slider
