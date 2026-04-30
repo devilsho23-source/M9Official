@@ -308,6 +308,7 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
         <div class="fg"><label>Hero Subtitle</label><input id="f-hsub"></div>
         <div class="fg"><label>Hero Description</label><input id="f-hdesc"></div>
         <div class="fg"><label>Footer Text</label><input id="f-footer"></div>
+        <div class="fg"><label>🖼 imgbb API Key (Banner upload အတွက်)</label><input id="f-imgbb" placeholder="imgbb.com မှာ free account ဖွင့်ပြီး key ယူပါ"></div>
         <button class="sbtn" onclick="saveGen()">💾 Save</button><span class="st" id="st-gen">✓ Saved!</span>
       </div>
       <div class="asec" id="tab-lnk">
@@ -321,7 +322,10 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
         <button class="sbtn" onclick="saveLnk()">💾 Save</button><span class="st" id="st-lnk">✓ Saved!</span>
       </div>
       <div class="asec" id="tab-bnr">
-        <div class="anote">ပုံကို တိုက်ရိုက် upload လုပ်နိုင်သည် (သို့) URL ထည့်နိုင်သည်</div>
+        <div class="anote">
+  ✅ <strong>General tab မှာ imgbb API Key ထည့်ထားရင်</strong> ပုံ upload လုပ်တာနဲ့ user အားလုံး မြင်ရမည်<br>
+  🔑 imgbb Key မထည့်ရသေးပါက ဒီ device မှာပဲ မြင်ရမည်
+</div>
         <div id="slide-fields"></div>
         <div style="display:flex;gap:8px;margin-bottom:4px;">
           <label class="aibn" style="cursor:pointer;flex:1;text-align:center;">
@@ -378,7 +382,7 @@ window.addEventListener('hashchange', initPage);
 </script>
 <script>
 const KEY='m9off_v3';
-const DEF={password:'admin123',brand:'M9 Official',ticker:'🟢 M9 Official APP - အခမဲ့ Download လုပ်နိုင်ပါသည် | Android & iOS | Live Casino | Slot Games | Viber & Telegram ဆက်သွယ်ရန် 🟢',footer:'Copyright © 2026 M9 Official | m9asia.com | m9skm.com',badge:'🟢 Official Version Available',hmain:'M9 Official APP',hsub:'Free Download — Latest Version',hdesc:'Android & iOS | m9asia.com | m9skm.com',siteTitle:'M9 Official APP - Free Download',a1t:'📱 m9asia.com Download',a1l:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',a2t:'📲 m9skm.com Download',a2l:'https://www.m9skm.com/down/index.html',iot:'🍎 iOS Install Guide',iol:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',vbt:'💬 Viber ဆက်သွယ်ရန်',vbl:'https://cutt.ly/m9official',tgt:'✈ Telegram ဆက်သွယ်ရန်',tgl:'http://t.me/M9official_bot',pht:'📞 +95 9400082168',phl:'tel:+959400082168',slides:[],p1t:'Welcome Bonus 100%',p1d:'အသစ်ဝင်ရောက်သူများအတွက် First Deposit 100% Bonus ရယူနိုင်ပါသည်',p1l:'https://cutt.ly/m9official',p2t:'Daily Reload Bonus',p2d:'နေ့တိုင်း Deposit လုပ်သောအခါ Extra Bonus ရယူနိုင်ပါသည်',p2l:'https://cutt.ly/m9official',p3t:'Commission',p3d:'0.9% ကော်မရှင် မများမားနဲ့ဆော်ကြမယ်',p3l:'https://cutt.ly/m9official',p4t:'Sunday Bonus',p4d:'Happy Sunday! FREE 50,000 ကြိုဆိုပါသည်',p4l:'https://cutt.ly/m9official'};
+const DEF={password:'admin123',brand:'M9 Official',ticker:'🟢 M9 Official APP - အခမဲ့ Download လုပ်နိုင်ပါသည် | Android & iOS | Live Casino | Slot Games | Viber & Telegram ဆက်သွယ်ရန် 🟢',footer:'Copyright © 2026 M9 Official | m9asia.com | m9skm.com',badge:'🟢 Official Version Available',hmain:'M9 Official APP',hsub:'Free Download — Latest Version',hdesc:'Android & iOS | m9asia.com | m9skm.com',siteTitle:'M9 Official APP - Free Download',a1t:'📱 m9asia.com Download',a1l:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',a2t:'📲 m9skm.com Download',a2l:'https://www.m9skm.com/down/index.html',iot:'🍎 iOS Install Guide',iol:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',vbt:'💬 Viber ဆက်သွယ်ရန်',vbl:'https://cutt.ly/m9official',tgt:'✈ Telegram ဆက်သွယ်ရန်',tgl:'http://t.me/M9official_bot',pht:'📞 +95 9400082168',phl:'tel:+959400082168',slides:[],p1t:'Welcome Bonus 100%',p1d:'အသစ်ဝင်ရောက်သူများအတွက် First Deposit 100% Bonus ရယူနိုင်ပါသည်',p1l:'https://cutt.ly/m9official',p2t:'Daily Reload Bonus',p2d:'နေ့တိုင်း Deposit လုပ်သောအခါ Extra Bonus ရယူနိုင်ပါသည်',p2l:'https://cutt.ly/m9official',p3t:'Commission',p3d:'0.9% ကော်မရှင် မများမားနဲ့ဆော်ကြမယ်',p3l:'https://cutt.ly/m9official',p4t:'Sunday Bonus',p4d:'Happy Sunday! FREE 50,000 ကြိုဆိုပါသည်',p4l:'https://cutt.ly/m9official',imgbbKey:'73a0a28e099ae8263686986e3afb9a0f'};
 const BIN_ID='69f2f7ed856a6821898cb404';
 const API_KEY='$2a$10$WIc.ZqHhagvDv5OhDDROAe4sDxmt7V4BM4ct/7t3Uf1hTUOjs0qX2';
 const BIN_URL='https://api.jsonbin.io/v3/b/'+BIN_ID;
@@ -416,6 +420,11 @@ async function syncFromServer(force){
         const localV=D._v||0;
         const serverV=data._v||0;
         if(serverV < localV && localV > 0) return; // Server is behind local — skip
+        // Merge: keep local b64 slides, take server URL slides + other settings
+        const localData=JSON.parse(localStorage.getItem(KEY)||'{}');
+        const localB64=(localData.slides||[]).filter(s=>s&&s.startsWith('data:'));
+        const serverUrls=(data.slides||[]).filter(s=>s&&!s.startsWith('data:'));
+        data.slides=[...serverUrls,...localB64];
         D=Object.assign({},DEF,data);
         localStorage.setItem(KEY,JSON.stringify(D));
         renderPage();
@@ -565,6 +574,18 @@ function addSlideUrl(){D.slides.push('');loadSlF();
 }
 function addSlide(){addSlideUrl();}
 function delSlide(i){D.slides.splice(i,1);loadSlF();}
+async function uploadToImgbb(base64Data){
+  // Remove data:image/jpeg;base64, prefix
+  const b64=base64Data.split(',')[1];
+  const fd=new FormData();
+  fd.append('key',D.imgbbKey);
+  fd.append('image',b64);
+  const r=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:fd});
+  if(!r.ok) throw new Error('imgbb upload failed: '+r.status);
+  const j=await r.json();
+  return j.data.url; // direct image URL
+}
+
 function handleUpload(e){
   const fls=Array.from(e.target.files);
   if(!fls.length)return;
@@ -573,7 +594,7 @@ function handleUpload(e){
     const reader=new FileReader();
     reader.onload=ev=>{
       const img=new Image();
-      img.onload=()=>{
+      img.onload=async()=>{
         const canvas=document.createElement('canvas');
         const maxW=1200;
         const scale=img.width>maxW?maxW/img.width:1;
@@ -582,17 +603,42 @@ function handleUpload(e){
         const ctx=canvas.getContext('2d');
         ctx.drawImage(img,0,0,canvas.width,canvas.height);
         const compressed=canvas.toDataURL('image/jpeg',0.75);
-        D.slides.push(compressed);
-        done++;
-        if(done===fls.length){
-          try{sv(D);renderPage();loadSlF();flash('st-bnr');}
-          catch(err){
-            if(D.slides.length>done){
-              D.slides=D.slides.slice(-done);
-              try{sv(D);renderPage();loadSlF();flash('st-bnr');}
-              catch(e2){alert('Storage ပြည့်နေသည်။ ဟောင်းသော Banner တွေ ဖျက်ပြီး ထပ်ကြိုးစားပါ။');}
-            } else {
-              alert('ပုံ size ကြီးလွန်းသည်။ ပုံကို resize လုပ်ပြီး ထပ်ကြိုးစားပါ (1200×600px အောက်)');
+        if(D.imgbbKey){
+          // Upload to imgbb → get URL → store URL (works on all devices!)
+          try{
+            setJbStatus(null,'⏳ Uploading image...');
+            document.getElementById('jb-status').style.background='#fff3cd';
+            document.getElementById('jb-status').style.color='#856404';
+            const url=await uploadToImgbb(compressed);
+            D.slides.push(url);
+            done++;
+            if(done===fls.length){
+              const ok=await sv(D);
+              renderPage();loadSlF();flash('st-bnr');
+              setJbStatus(ok,'✅ Image uploaded & synced!');
+            }
+          }catch(err){
+            console.error('imgbb error:',err);
+            setJbStatus(false,'❌ imgbb upload failed');
+            // Fallback: store as base64 locally
+            D.slides.push(compressed);
+            done++;
+            if(done===fls.length){
+              localStorage.setItem(KEY,JSON.stringify(D));
+              renderPage();loadSlF();flash('st-bnr');
+            }
+          }
+        } else {
+          // No imgbb key: store as base64 (local device only)
+          D.slides.push(compressed);
+          done++;
+          if(done===fls.length){
+            try{
+              localStorage.setItem(KEY,JSON.stringify(D));
+              renderPage();loadSlF();flash('st-bnr');
+              alert('⚠️ imgbb API Key မထည့်ရသေးပါ!\nAdmin → General → imgbb API Key ထည့်ပါ\nမဟုတ်ရင် ဒီ device မှာပဲ ပုံမြင်ရမည်');
+            }catch(err){
+              alert('Storage ပြည့်နေသည်။ imgbb API Key ထည့်ပြီး cloud upload သုံးပါ');
             }
           }
         }
@@ -603,16 +649,24 @@ function handleUpload(e){
   });
   e.target.value='';
 }
-function saveGen(){D.siteTitle=g('f-stitle')||D.siteTitle;D.brand=g('f-brand')||D.brand;D.ticker=g('f-ticker');D.badge=g('f-badge');D.hmain=g('f-hmain');D.hsub=g('f-hsub');D.hdesc=g('f-hdesc');D.footer=g('f-footer');sv(D);renderPage();flash('st-gen');}
+function saveGen(){D.siteTitle=g('f-stitle')||D.siteTitle;D.brand=g('f-brand')||D.brand;D.ticker=g('f-ticker');D.badge=g('f-badge');D.hmain=g('f-hmain');D.hsub=g('f-hsub');D.hdesc=g('f-hdesc');D.footer=g('f-footer');D.imgbbKey=g('f-imgbb');sv(D);renderPage();flash('st-gen');}
 function saveLnk(){D.a1t=g('f-a1t');D.a1l=g('f-a1l');D.a2t=g('f-a2t');D.a2l=g('f-a2l');D.iot=g('f-iot');D.iol=g('f-iol');D.io2t=g('f-io2t');D.io2l=g('f-io2l');D.vbt=g('f-vbt');D.vbl=g('f-vbl');D.tgt=g('f-tgt');D.tgl=g('f-tgl');D.pht=g('f-pht');D.phl=g('f-phl');sv(D);renderPage();flash('st-lnk');}
-function saveBnr(){
+async function saveBnr(){
   const newSlides=[];
   D.slides.forEach((url,i)=>{
     if(url.startsWith('data:')){newSlides.push(url);}
     else{const inp=document.querySelector('.slide-url-input[data-idx="'+i+'"]');newSlides.push(inp?inp.value.trim():url);}
   });
   D.slides=newSlides.filter(Boolean);
-  sv(D);renderPage();flash('st-bnr');
+  // Save URLs to JSONBin (small size), base64 to localStorage only
+  const urlOnlySlides=D.slides.filter(s=>!s.startsWith('data:'));
+  const b64Slides=D.slides.filter(s=>s.startsWith('data:'));
+  const cloudD={...D,slides:urlOnlySlides};
+  const ok=await sv(cloudD);
+  // Always save full data (including b64) to localStorage
+  localStorage.setItem(KEY,JSON.stringify(D));
+  if(ok) setJbStatus(true,'✅ Synced');
+  renderPage();flash('st-bnr');
 }
 async function changePw(){
   const o=g('f-opw'),n=g('f-npw'),conf=g('f-cpw'),err=document.getElementById('pwerr');
@@ -670,7 +724,7 @@ function loadF(){
   sf('f-stitle',D.siteTitle);sf('f-brand',D.brand);sf('f-ticker',D.ticker);sf('f-badge',D.badge);
   sf('f-hmain',D.hmain);sf('f-hsub',D.hsub);sf('f-hdesc',D.hdesc);sf('f-footer',D.footer);
   sf('f-a1t',D.a1t);sf('f-a1l',D.a1l);sf('f-a2t',D.a2t);sf('f-a2l',D.a2l);
-  sf('f-iot',D.iot);sf('f-iol',D.iol);sf('f-io2t',D.io2t||'🍎 m9skm.com iOS Install');sf('f-io2l',D.io2l||'https://www.m9skm.com/down/index.html');
+  sf('f-imgbb',D.imgbbKey||'');sf('f-iot',D.iot);sf('f-iol',D.iol);sf('f-io2t',D.io2t||'🍎 m9skm.com iOS Install');sf('f-io2l',D.io2l||'https://www.m9skm.com/down/index.html');
   sf('f-vbt',D.vbt);sf('f-vbl',D.vbl);sf('f-tgt',D.tgt);sf('f-tgl',D.tgl);sf('f-pht',D.pht);sf('f-phl',D.phl);
   renderPromoAdminList();
 }
