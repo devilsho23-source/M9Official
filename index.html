@@ -460,15 +460,16 @@ async function syncFromServer(force){
 async function sv(d){
   if(_saving) return false;
   _saving=true;
-  _lastSaveTime=Date.now();
-  D=d;
-  localStorage.setItem(KEY,JSON.stringify(d));
+  const payload=Object.assign({},d,{_v:Date.now()});
+  _lastSaveTime=payload._v;
+  D=payload;
+  localStorage.setItem(KEY,JSON.stringify(payload));
   let success=false;
   try{
     const r=await fetch(BIN_URL,{
       method:'PUT',
       headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},
-      body:JSON.stringify(d)
+      body:JSON.stringify(payload)
     });
     success=r.ok;
     if(!r.ok){
@@ -656,8 +657,8 @@ function handleUpload(e){
   });
   e.target.value='';
 }
-function saveGen(){D.siteTitle=g('f-stitle')||D.siteTitle;D.brand=g('f-brand')||D.brand;D.ticker=g('f-ticker');D.badge=g('f-badge');D.hmain=g('f-hmain');D.hsub=g('f-hsub');D.hdesc=g('f-hdesc');D.footer=g('f-footer');D.imgbbKey=g('f-imgbb');sv(D);renderPage();flash('st-gen');}
-function saveLnk(){D.a1t=g('f-a1t');D.a1l=g('f-a1l');D.a2t=g('f-a2t');D.a2l=g('f-a2l');D.iot=g('f-iot');D.iol=g('f-iol');D.io2t=g('f-io2t');D.io2l=g('f-io2l');D.vbt=g('f-vbt');D.vbl=g('f-vbl');D.tgt=g('f-tgt');D.tgl=g('f-tgl');D.pht=g('f-pht');D.phl=g('f-phl');sv(D);renderPage();flash('st-lnk');}
+async function saveGen(){D.siteTitle=g('f-stitle')||D.siteTitle;D.brand=g('f-brand')||D.brand;D.ticker=g('f-ticker');D.badge=g('f-badge');D.hmain=g('f-hmain');D.hsub=g('f-hsub');D.hdesc=g('f-hdesc');D.footer=g('f-footer');D.imgbbKey=g('f-imgbb');const ok=await sv(D);renderPage();if(ok){flash('st-gen');}else{alert('Save မဝင်သေးပါ။ JSONBin / network ကိုစစ်ပါ။');}}
+async function saveLnk(){D.a1t=g('f-a1t');D.a1l=g('f-a1l');D.a2t=g('f-a2t');D.a2l=g('f-a2l');D.iot=g('f-iot');D.iol=g('f-iol');D.io2t=g('f-io2t');D.io2l=g('f-io2l');D.vbt=g('f-vbt');D.vbl=g('f-vbl');D.tgt=g('f-tgt');D.tgl=g('f-tgl');D.pht=g('f-pht');D.phl=g('f-phl');const ok=await sv(D);renderPage();if(ok){flash('st-lnk');}else{alert('Save မဝင်သေးပါ။ JSONBin / network ကိုစစ်ပါ။');}}
 async function saveBnr(){
   const newSlides=[];
   D.slides.forEach((url,i)=>{
@@ -740,7 +741,7 @@ function getPromos(){
 }
 function savePromos(arr){
   D.promos = arr;
-  sv(D);
+  return sv(D);
 }
 function renderPromoGrid(){
   const grid = document.getElementById('promo-grid');
@@ -807,7 +808,7 @@ function deletePromo(i){
   renderPromoAdminList();
   renderPromoGrid();
 }
-function saveAllPromo(){
+async function saveAllPromo(){
   const promos = getPromos();
   promos.forEach((p,i) => {
     const tag=document.getElementById('pad-tag-'+i);
@@ -819,9 +820,9 @@ function saveAllPromo(){
     if(desc) p.desc=desc.value;
     if(link) p.link=link.value;
   });
-  savePromos(promos);
+  const ok=await savePromos(promos);
   renderPromoGrid();
-  flash('st-prm');
+  if(ok){flash('st-prm');}else{alert('Promo save မဝင်သေးပါ။ JSONBin / network ကိုစစ်ပါ။');}
 }
 function uploadPromoImg(e, i){
   const file = e.target.files[0]; if(!file) return;
