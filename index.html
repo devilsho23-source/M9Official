@@ -150,7 +150,7 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
 </head>
 <body>
 <nav>
-  <a class="nav-left" href="#home" onclick="showPage('home');secretTap()">
+  <a class="nav-left" href="#home" onclick="showPage('home')">
         <img loading="lazy" decoding="async" src="assets/img-01.jpg" alt="M9">
     <span class="nav-brand" id="nav-brand">M9 Official</span>
   </a>
@@ -170,7 +170,7 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
 <div class="page-section active" id="page-home">
 <div class="wrap">
   <div class="hero">
-    <img loading="lazy" decoding="async" class="hero-logo" src="assets/img-01.jpg" alt="M9">
+    <img loading="lazy" decoding="async" class="hero-logo" id="hero-logo" src="assets/img-01.jpg" alt="M9">
     <div class="hero-badge" id="hero-badge">🟢 Official Version Available</div>
     <h1 class="hero-title"><span id="hero-main">M9 Official APP</span><span class="hero-title-sub" id="hero-sub-title">Free Download — Latest Version</span></h1>
     <p class="hero-sub" id="hero-sub">Android &amp; iOS | m9asia.com | m9skm.com</p>
@@ -180,9 +180,9 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
     </div>
     <div style="display:flex;flex-direction:row;gap:16px;align-items:center;justify-content:center;width:100%;max-width:420px;margin:0 auto 16px;">
       <a id="btn-apk1" href="https://www.m9asia.com/page/login/downloadBrandApp.jsp" target="_blank" style="display:flex;justify-content:center;">
-        <img loading="lazy" decoding="async" src="assets/img-02.png" style="height:72px;border-radius:16px;object-fit:contain;cursor:pointer;transition:transform 0.15s;box-shadow:0 4px 16px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <img loading="lazy" decoding="async" id="apk1-img" src="assets/img-02.png" style="height:72px;border-radius:16px;object-fit:contain;cursor:pointer;transition:transform 0.15s;box-shadow:0 4px 16px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></a>
       <a id="btn-apk2" href="https://www.m9skm.com/down/index.html" target="_blank" style="display:flex;justify-content:center;">
-        <img loading="lazy" decoding="async" src="assets/img-03.png" style="height:72px;border-radius:16px;object-fit:contain;cursor:pointer;transition:transform 0.15s;box-shadow:0 4px 16px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></a>
+        <img loading="lazy" decoding="async" id="apk2-img" src="assets/img-03.png" style="height:72px;border-radius:16px;object-fit:contain;cursor:pointer;transition:transform 0.15s;box-shadow:0 4px 16px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></a>
     </div>
     <div class="btn-row">
       <a class="btn btn-ol" href="#promotion" onclick="showPage('promotion')" style="font-weight:800;font-size:1rem;letter-spacing:0.03em;color:#FFD700 !important;">🎁 Promotion ကြည့်ရန်</a>
@@ -191,23 +191,23 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
   </div>
   <div class="cards">
     <div class="card">
-      <img loading="lazy" decoding="async" src="assets/img-04.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;margin-bottom:10px;">
-      <div class="card-ti">Live Casino</div>
-      <div class="card-ds">Real-time dealer games</div>
+      <img loading="lazy" decoding="async" id="card1-img" src="assets/img-04.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;margin-bottom:10px;">
+      <div class="card-ti" id="card1-ti">Live Casino</div>
+      <div class="card-ds" id="card1-ds">Real-time dealer games</div>
     </div>
     <div class="card">
-      <img loading="lazy" decoding="async" src="assets/img-05.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;margin-bottom:10px;">
-      <div class="card-ti">Sports Betting</div>
-      <div class="card-ds">Live sports &amp; e-sports</div>
+      <img loading="lazy" decoding="async" id="card2-img" src="assets/img-05.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;margin-bottom:10px;">
+      <div class="card-ti" id="card2-ti">Sports Betting</div>
+      <div class="card-ds" id="card2-ds">Live sports &amp; e-sports</div>
     </div>
     <div class="card">
-      <img loading="lazy" decoding="async" src="assets/img-06.jpg">
+      <img loading="lazy" decoding="async" id="card3-img" src="assets/img-06.jpg">
       <div class="card-body">
-      <div class="card-ti">Slot Games</div>
-      <div class="card-ds">Hundreds of premium slots</div>
+      <div class="card-ti" id="card3-ti">Slot Games</div>
+      <div class="card-ds" id="card3-ds">Hundreds of premium slots</div>
       </div>
     </div>
-    <div class="card"><div class="card-ic">🔒</div><div class="card-ti">Official &amp; Secure</div><div class="card-ds">Licensed &amp; trusted platform</div></div>
+    <div class="card"><div class="card-ic">🔒</div><div class="card-ti" id="card4-ti">Official &amp; Secure</div><div class="card-ds" id="card4-ds">Licensed &amp; trusted platform</div></div>
   </div>
 </div>
 </div>
@@ -298,6 +298,7 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
     <div class="acnt" id="acnt">
       <div class="atabs">
         <button class="atab active" onclick="stab('gen',this)">🏠 General</button>
+        <button class="atab" onclick="stab('home',this)">🧩 Home</button>
         <button class="atab" onclick="stab('lnk',this)">🔗 Links</button>
         <button class="atab" onclick="stab('bnr',this)">🖼 Banner</button>
         <button class="atab" onclick="stab('prm',this)">🎁 Promo</button>
@@ -314,6 +315,19 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
         <div class="fg"><label>Footer Text</label><input id="f-footer"></div>
         <div class="fg"><label>🖼 imgbb API Key (Banner upload အတွက်)</label><input id="f-imgbb" placeholder="imgbb.com မှာ free account ဖွင့်ပြီး key ယူပါ"></div>
         <button class="sbtn" onclick="saveGen()">💾 Save</button><span class="st" id="st-gen">✓ Saved!</span>
+      </div>
+      <div class="asec" id="tab-home">
+        <div class="anote">Home page က logo, app buttons, feature cards အားလုံးကို ဒီ tab ကနေပြင်နိုင်ပါတယ်</div>
+        <div class="fg"><label>Logo Image URL / Path</label><input id="f-logo"></div>
+        <div class="frow"><div class="fg"><label>APK Button 1 Image</label><input id="f-apk1img"></div><div class="fg"><label>APK Button 2 Image</label><input id="f-apk2img"></div></div>
+        <div class="frow"><div class="fg"><label>Card 1 Image</label><input id="f-c1i"></div><div class="fg"><label>Card 1 Title</label><input id="f-c1t"></div></div>
+        <div class="fg"><label>Card 1 Description</label><input id="f-c1d"></div>
+        <div class="frow"><div class="fg"><label>Card 2 Image</label><input id="f-c2i"></div><div class="fg"><label>Card 2 Title</label><input id="f-c2t"></div></div>
+        <div class="fg"><label>Card 2 Description</label><input id="f-c2d"></div>
+        <div class="frow"><div class="fg"><label>Card 3 Image</label><input id="f-c3i"></div><div class="fg"><label>Card 3 Title</label><input id="f-c3t"></div></div>
+        <div class="fg"><label>Card 3 Description</label><input id="f-c3d"></div>
+        <div class="frow"><div class="fg"><label>Card 4 Title</label><input id="f-c4t"></div><div class="fg"><label>Card 4 Description</label><input id="f-c4d"></div></div>
+        <button class="sbtn" onclick="saveHome()">💾 Save</button><span class="st" id="st-home">✓ Saved!</span>
       </div>
       <div class="asec" id="tab-lnk">
         <div class="frow"><div class="fg"><label>Btn 1 Text</label><input id="f-a1t"></div><div class="fg"><label>Btn 1 Link</label><input id="f-a1l"></div></div>
@@ -364,18 +378,9 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
 </div>
 <script>
 // SPA Navigation
-// Secret admin access — Logo 5x tap
-let _tapCount=0, _tapTimer=null;
-function secretTap(){
-  _tapCount++;
-  clearTimeout(_tapTimer);
-  if(_tapCount>=5){
-    _tapCount=0;
-    openAdmin();
-    return;
-  }
-  _tapTimer=setTimeout(()=>{ _tapCount=0; }, 2000);
-}
+// Admin access is explicit only
+function secretTap(){ return; }
+const ADMIN_MODE = window.location.search.includes('admin=1') || window.location.hash === '#admin';
 
 function showPage(page) {
   document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
@@ -396,10 +401,11 @@ function initPage() {
   showPage(valid.includes(hash) ? hash : 'home');
 }
 window.addEventListener('hashchange', initPage);
+window.addEventListener('DOMContentLoaded', ()=>{ if(ADMIN_MODE) setTimeout(openAdmin, 300); });
 </script>
 <script>
 const KEY='m9off_v3';
-const DEF={password:'admin123',brand:'M9 Official',ticker:'🟢 M9 Official APP - အခမဲ့ Download လုပ်နိုင်ပါသည် | Android & iOS | Live Casino | Slot Games | Viber & Telegram ဆက်သွယ်ရန် 🟢',footer:'Copyright © 2026 M9 Official | m9asia.com | m9skm.com',badge:'🟢 Official Version Available',hmain:'M9 Official APP',hsub:'Free Download — Latest Version',hdesc:'Android & iOS | m9asia.com | m9skm.com',siteTitle:'M9 Official APP - Free Download',a1t:'📱 m9asia.com Download',a1l:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',a2t:'📲 m9skm.com Download',a2l:'https://www.m9skm.com/down/index.html',iot:'🍎 iOS Install Guide',iol:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',vbt:'💬 Viber ဆက်သွယ်ရန်',vbl:'https://cutt.ly/M9Official',tgt:'✈ Telegram ဆက်သွယ်ရန်',tgl:'http://t.me/M9official_bot',pht:'📞 +95 9400082168',phl:'tel:+959400082168',slides:[],p1t:'Welcome Bonus 100%',p1d:'မန်ဘာသစ်များအတွက် First Deposit 200% Bonus ရယူနိုင်ပါသည်။',p1l:'https://cutt.ly/M9Official',p2t:'Daily Reload Bonus',p2d:'နေ့တိုင်း ငွေသွင်းပြီး နေ့စဉ်ဘောနပ် ရယူနိုင်ပါသည်။ တစ်နေ့ (3) ကြိမ်',p2l:'https://cutt.ly/M9Official',p3t:'Commission',p3d:'အပတ်စဉ်တိုင်း 0.9% ကော်မရှင် များများရယူလိုက်ပါ။',p3l:'https://cutt.ly/M9Official',p4t:'Sunday Bonus',p4d:'Happy Sunday! FREE 50,000 အစီအစဉ်မှာပါဝင်လိုက်ပါ။',p4l:'https://cutt.ly/M9Official',imgbbKey:'73a0a28e099ae8263686986e3afb9a0f',promos:[]};
+const DEF={password:'admin123',brand:'M9 Official',ticker:'🟢 M9 Official APP - အခမဲ့ Download လုပ်နိုင်ပါသည် | Android & iOS | Live Casino | Slot Games | Viber & Telegram ဆက်သွယ်ရန် 🟢',footer:'Copyright © 2026 M9 Official | m9asia.com | m9skm.com',badge:'🟢 Official Version Available',hmain:'M9 Official APP',hsub:'Free Download — Latest Version',hdesc:'Android & iOS | m9asia.com | m9skm.com',siteTitle:'M9 Official APP - Free Download',a1t:'📱 m9asia.com Download',a1l:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',a2t:'📲 m9skm.com Download',a2l:'https://www.m9skm.com/down/index.html',iot:'🍎 iOS Install Guide',iol:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',vbt:'💬 Viber ဆက်သွယ်ရန်',vbl:'https://cutt.ly/M9Official',tgt:'✈ Telegram ဆက်သွယ်ရန်',tgl:'http://t.me/M9official_bot',pht:'📞 +95 9400082168',phl:'tel:+959400082168',slides:[],p1t:'Welcome Bonus 100%',p1d:'မန်ဘာသစ်များအတွက် First Deposit 200% Bonus ရယူနိုင်ပါသည်။',p1l:'https://cutt.ly/M9Official',p2t:'Daily Reload Bonus',p2d:'နေ့တိုင်း ငွေသွင်းပြီး နေ့စဉ်ဘောနပ် ရယူနိုင်ပါသည်။ တစ်နေ့ (3) ကြိမ်',p2l:'https://cutt.ly/M9Official',p3t:'Commission',p3d:'အပတ်စဉ်တိုင်း 0.9% ကော်မရှင် များများရယူလိုက်ပါ။',p3l:'https://cutt.ly/M9Official',p4t:'Sunday Bonus',p4d:'Happy Sunday! FREE 50,000 အစီအစဉ်မှာပါဝင်လိုက်ပါ။',p4l:'https://cutt.ly/M9Official',imgbbKey:'73a0a28e099ae8263686986e3afb9a0f',logo:'assets/img-01.jpg',apk1img:'assets/img-02.png',apk2img:'assets/img-03.png',c1i:'assets/img-04.jpg',c1t:'Live Casino',c1d:'Real-time dealer games',c2i:'assets/img-05.jpg',c2t:'Sports Betting',c2d:'Live sports & e-sports',c3i:'assets/img-06.jpg',c3t:'Slot Games',c3d:'Hundreds of premium slots',c4i:'',c4t:'Official & Secure',c4d:'Licensed & trusted platform',promos:[]};
 const BIN_ID='69f2f7ed856a6821898cb404';
 const API_KEY='$2a$10$WIc.ZqHhagvDv5OhDDROAe4sDxmt7V4BM4ct/7t3Uf1hTUOjs0qX2';
 const BIN_URL='https://api.jsonbin.io/v3/b/'+BIN_ID;
@@ -473,6 +479,7 @@ async function sv(d){
   if(_saving) return false;
   _saving=true;
   _lastSaveTime=Date.now();
+  d._v=Date.now();
   D=d;
   localStorage.setItem(KEY,JSON.stringify(d));
   let success=false;
@@ -505,10 +512,10 @@ function flash(id){const e=document.getElementById(id);if(!e)return;e.style.opac
 function renderBase(){
   document.title=D.siteTitle;
   tx('nav-brand',D.brand);tx('ticker-text',D.ticker);
-  // Use innerHTML for footer to preserve <a> links embedded in the footer text
   const ft=document.getElementById('footer-text');
   if(ft){ft.innerHTML=D.footer||ft.innerHTML;}
 }
+function setImg(id,src){const e=document.getElementById(id); if(e && src) e.src=src;}
 // admin
 let li=false;
 function setJbStatus(ok,msg){
@@ -526,8 +533,7 @@ async function testJbConnection(){
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});
     if(r.ok){
       const j=await r.json();
-      const hasPw=j.record&&j.record.password;
-      setJbStatus(true,'✅ Connected'+(hasPw?' | PW: '+j.record.password.substring(0,3)+'***':''));
+      setJbStatus(true,'✅ Connected to JSONBin');
     } else {
       const txt=await r.text();
       setJbStatus(false,'❌ '+r.status+': '+txt.substring(0,40));
@@ -686,8 +692,8 @@ function handleUpload(e){
   });
   e.target.value='';
 }
-function saveGen(){D.siteTitle=g('f-stitle')||D.siteTitle;D.brand=g('f-brand')||D.brand;D.ticker=g('f-ticker');D.badge=g('f-badge');D.hmain=g('f-hmain');D.hsub=g('f-hsub');D.hdesc=g('f-hdesc');D.footer=g('f-footer');D.imgbbKey=g('f-imgbb');sv(D);renderPage();flash('st-gen');}
-function saveLnk(){D.a1t=g('f-a1t');D.a1l=g('f-a1l');D.a2t=g('f-a2t');D.a2l=g('f-a2l');D.iot=g('f-iot');D.iol=g('f-iol');D.io2t=g('f-io2t');D.io2l=g('f-io2l');D.vbt=g('f-vbt');D.vbl=g('f-vbl');D.tgt=g('f-tgt');D.tgl=g('f-tgl');D.pht=g('f-pht');D.phl=g('f-phl');sv(D);renderPage();flash('st-lnk');}
+async function saveGen(){D.siteTitle=g('f-stitle')||D.siteTitle;D.brand=g('f-brand')||D.brand;D.ticker=g('f-ticker');D.badge=g('f-badge');D.hmain=g('f-hmain');D.hsub=g('f-hsub');D.hdesc=g('f-hdesc');D.footer=g('f-footer');D.imgbbKey=g('f-imgbb');const ok=await sv(D);renderPage();flash('st-gen');if(ok) setJbStatus(true,'✅ General settings saved');}
+async function saveLnk(){D.a1t=g('f-a1t');D.a1l=g('f-a1l');D.a2t=g('f-a2t');D.a2l=g('f-a2l');D.iot=g('f-iot');D.iol=g('f-iol');D.io2t=g('f-io2t');D.io2l=g('f-io2l');D.vbt=g('f-vbt');D.vbl=g('f-vbl');D.tgt=g('f-tgt');D.tgl=g('f-tgl');D.pht=g('f-pht');D.phl=g('f-phl');const ok=await sv(D);renderPage();flash('st-lnk');if(ok) setJbStatus(true,'✅ Links saved');}
 async function saveBnr(){
   const newSlides=[];
   D.slides.forEach((url,i)=>{
@@ -744,6 +750,11 @@ function renderPage(){
   renderBase();
   // Home page
   tx('hero-badge',D.badge);tx('hero-main',D.hmain);tx('hero-sub-title',D.hsub);tx('hero-sub',D.hdesc);
+  setImg('hero-logo',D.logo); setImg('apk1-img',D.apk1img); setImg('apk2-img',D.apk2img);
+  setImg('card1-img',D.c1i); tx('card1-ti',D.c1t); tx('card1-ds',D.c1d);
+  setImg('card2-img',D.c2i); tx('card2-ti',D.c2t); tx('card2-ds',D.c2d);
+  setImg('card3-img',D.c3i); tx('card3-ti',D.c3t); tx('card3-ds',D.c3d);
+  tx('card4-ti',D.c4t); tx('card4-ds',D.c4d);
   sb('btn-apk1',D.a1t,D.a1l);sb('btn-apk2',D.a2t,D.a2l);
   renderSlider();
   // Download page
@@ -760,10 +771,23 @@ function renderPage(){
 function loadF(){
   sf('f-stitle',D.siteTitle);sf('f-brand',D.brand);sf('f-ticker',D.ticker);sf('f-badge',D.badge);
   sf('f-hmain',D.hmain);sf('f-hsub',D.hsub);sf('f-hdesc',D.hdesc);sf('f-footer',D.footer);
+  sf('f-logo',D.logo||''); sf('f-apk1img',D.apk1img||''); sf('f-apk2img',D.apk2img||'');
+  sf('f-c1i',D.c1i||''); sf('f-c1t',D.c1t||''); sf('f-c1d',D.c1d||'');
+  sf('f-c2i',D.c2i||''); sf('f-c2t',D.c2t||''); sf('f-c2d',D.c2d||'');
+  sf('f-c3i',D.c3i||''); sf('f-c3t',D.c3t||''); sf('f-c3d',D.c3d||'');
+  sf('f-c4t',D.c4t||''); sf('f-c4d',D.c4d||'');
   sf('f-a1t',D.a1t);sf('f-a1l',D.a1l);sf('f-a2t',D.a2t);sf('f-a2l',D.a2l);
   sf('f-imgbb',D.imgbbKey||'');sf('f-iot',D.iot);sf('f-iol',D.iol);sf('f-io2t',D.io2t||'🍎 m9skm.com iOS Install');sf('f-io2l',D.io2l||'https://www.m9skm.com/down/index.html');
   sf('f-vbt',D.vbt);sf('f-vbl',D.vbl);sf('f-tgt',D.tgt);sf('f-tgl',D.tgl);sf('f-pht',D.pht);sf('f-phl',D.phl);
   renderPromoAdminList();
+}
+async function saveHome(){
+  D.logo=g('f-logo'); D.apk1img=g('f-apk1img'); D.apk2img=g('f-apk2img');
+  D.c1i=g('f-c1i'); D.c1t=g('f-c1t'); D.c1d=g('f-c1d');
+  D.c2i=g('f-c2i'); D.c2t=g('f-c2t'); D.c2d=g('f-c2d');
+  D.c3i=g('f-c3i'); D.c3t=g('f-c3t'); D.c3d=g('f-c3d');
+  D.c4t=g('f-c4t'); D.c4d=g('f-c4d');
+  const ok=await sv(D); renderPage(); flash('st-home'); if(ok) setJbStatus(true,'✅ Home settings saved');
 }
 </script>
 <script>
