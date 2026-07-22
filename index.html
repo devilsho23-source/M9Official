@@ -146,6 +146,24 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
 /* SPA page sections */
 .page-section { display: none; }
 .page-section.active { display: block; }
+
+/* Buttons & Logos Pulse Animation */
+#btn-apk1 img, #btn-apk2 img, .btn-row .btn-ol {
+  animation: pulse-bounce 2s infinite ease-in-out;
+}
+
+#btn-apk2 img, .btn-row .btn-ol:last-child {
+  animation-delay: 0.3s;
+}
+
+@keyframes pulse-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05) translateY(-3px);
+  }
+}
 </style>
 </head>
 <body>
