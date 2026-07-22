@@ -151,7 +151,7 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
 <body>
 <nav>
   <a class="nav-left" href="#home" onclick="showPage('home')">
-        <img loading="lazy" decoding="async" src="assets/img-01.jpg" alt="M9">
+    <img loading="lazy" decoding="async" id="nav-logo" src="assets/img-01.jpg" alt="M9">
     <span class="nav-brand" id="nav-brand">M9 Official</span>
   </a>
   <ul class="nav-links" id="navlinks">
@@ -261,7 +261,7 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
     <div class="ct-card">
       <div class="ct-head"><span class="ct-ic">💬</span><div><div class="ct-lbl">Viber</div><div class="ct-nm">M9 Official Viber</div></div></div>
       <div class="ct-val" id="ct-vb-val">https://cutt.ly/M9Official</div>
-      <a class="btn btn-vb" id="btn-viber" href="https://cutt.ly/M9Official" target="_blank" style="width:100%;gap:10px;"><img loading="lazy" decoding="async" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjQiIGZpbGw9IiM3MzYwRjIiLz48cGF0aCBkPSJNMzMuNiAxNC4zYy0yLjQtMi4yLTYtMy4zLTEwLjMtMy4zLTcuOCAwLTEzLjMgNC44LTEzLjMgMTEuNSAwIDMuMyAxLjQgNi4zIDMuOSA4LjR2My44YzAgLjYuNyAxIDEuMi42bDQuMS0yLjVjMS4zLjMgMi43LjUgNC4xLjUgNy44IDAgMTMuMy00LjggMTMuMy0xMS41IDAtMy4yLTEuMy02LTMtOHoiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTMwIDI2LjJjLS4zLjgtMS4yIDEuMy0yIDEuMy0uMiAwLS40IDAtLjYtLjEtMy44LTEuMi03LTQuMy04LjEtOC4yLS4zLTEgLjItMi4xIDEuMi0yLjQuNS0uMS45IDAgMS4yLjNsMS41IDEuOGMuMy4zLjMuOCAwIDEuMWwtLjcuN2MtLjMuMy0uMy43LS4xIDEgLjkgMS41IDIuNCAzIDMuOSAzLjkuMy4yLjcuMiAxLS4xbC43LS43Yy4zLS4zLjgtLjMgMS4xIDBsMS44IDEuNWMuNS4zLjYuOC40IDEuM3oiIGZpbGw9IiM3MzYwRjIiLz48L3N2Zz4=" style="width:26px;height:26px;flex-shrink:0;"><span>Viber ဆက်သွယ်ရန်</span></a>
+      <a class="btn btn-vb" id="btn-viber" href="https://cutt.ly/M9Official" target="_blank" style="width:100%;gap:10px;"><img loading="lazy" decoding="async" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjQiIGZpbGw9IiM3MzYwRjIiLz48cGF0aCBkPSJNMzMuNiAxNC4zYy0yLjQtMi4yLTYtMy4zLTEwLjMtMy4zLTcuOCAwLTEzLjMgNC44LTEzLjMgMTEuNSAwIDMuMyAxLjQgNi4zIDMuOSA4LjR2My44YzAgLjYuNyAx IDEuMi42bDQuMS0yLjVjMS4zLjMgMi43LjUgNC4xLjUgNy44IDAgMTMuMy04LjggMTMuMy0xMS41IDAtMy4yLTEuMy02LTMtOHoiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTMwIDI2LjJjLS4zLjgtMS4yIDEuMy0yIDEuMy0uMiAwLS40IDAtLjYtLjEtMy44LTEuMi03LTQuMy04LjEtOC4yLS4zLTEgLjItMi4xIDEuMi0yLjQuNS0uMS45IDAgMS4yLjNsMS41IDEuOGMuMy4zLjMuOCAwIDEuMWwtLjcuN2MtLjMuMy0uMy43LS4xIDEgLjkgMS41IDIuNCAzIDMuOSAzLjkuMy4yLjcuMiAxLS4xbC43LS43Yy4zLS4zLjgtLjMgMS4xIDBsMS44IDEuNWMuNS4zLjYuOC40IDEuM3oiIGZpbGw9IiM3MzYwRjIiLz48L3N2Zz4=" style="width:26px;height:26px;flex-shrink:0;"><span>Viber ဆက်သွယ်ရန်</span></a>
     </div>
     <div class="ct-card">
       <div class="ct-head"><span class="ct-ic">✈</span><div><div class="ct-lbl">Telegram</div><div class="ct-nm">M9 Official Bot</div></div></div>
@@ -290,7 +290,6 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
   <div class="ap">
     <div class="ah"><h2>⚙ Admin Panel</h2><div style="display:flex;align-items:center;gap:8px;"><span id="jb-status" style="font-size:0.7rem;padding:3px 8px;border-radius:10px;background:#eee;color:#888;">🔄 Connecting...</span><button class="ac-btn" onclick="closeAdmin()">✕</button></div></div>
     <div class="alog" id="alog">
-      
       <input type="password" id="apw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"><br>
       <button class="alog-btn" onclick="doLogin()">Login</button>
       <div class="aerr" id="aerr"></div>
@@ -376,9 +375,9 @@ footer a{color:var(--yellow-dim);text-decoration:none;}
     </div>
   </div>
 </div>
+
 <script>
 // SPA Navigation
-// Admin access is explicit only
 function secretTap(){ return; }
 const ADMIN_MODE = window.location.search.includes('admin=1') || window.location.hash === '#admin';
 
@@ -394,7 +393,6 @@ function showPage(page) {
   if(page === 'home') renderSlider();
   window.location.hash = page;
 }
-// Init page from hash
 function initPage() {
   const hash = (window.location.hash || '#home').replace('#','');
   const valid = ['home','download','promotion','contact'];
@@ -403,28 +401,25 @@ function initPage() {
 window.addEventListener('hashchange', initPage);
 window.addEventListener('DOMContentLoaded', ()=>{ if(ADMIN_MODE) setTimeout(openAdmin, 300); });
 </script>
+
 <script>
 const KEY='m9off_v3';
-const DEF={password:'admin123',brand:'M9 Official',ticker:'🟢 M9 Official APP - အခမဲ့ Download လုပ်နိုင်ပါသည် | Android & iOS | Live Casino | Slot Games | Viber & Telegram ဆက်သွယ်ရန် 🟢',footer:'Copyright © 2026 M9 Official | m9asia.com | m9skm.com',badge:'🟢 Official Version Available',hmain:'M9 Official APP',hsub:'Free Download — Latest Version',hdesc:'Android & iOS | m9asia.com | m9skm.com',siteTitle:'M9 Official APP - Free Download',a1t:'📱 m9asia.com Download',a1l:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',a2t:'📲 m9skm.com Download',a2l:'https://www.m9skm.com/down/index.html',iot:'🍎 iOS Install Guide',iol:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',vbt:'💬 Viber ဆက်သွယ်ရန်',vbl:'https://cutt.ly/M9Official',tgt:'✈ Telegram ဆက်သွယ်ရန်',tgl:'http://t.me/M9official_bot',pht:'📞 +95 9400082168',phl:'tel:+959400082168',slides:[],p1t:'Welcome Bonus 100%',p1d:'မန်ဘာသစ်များအတွက် First Deposit 200% Bonus ရယူနိုင်ပါသည်။',p1l:'https://cutt.ly/M9Official',p2t:'Daily Reload Bonus',p2d:'နေ့တိုင်း ငွေသွင်းပြီး နေ့စဉ်ဘောနပ် ရယူနိုင်ပါသည်။ တစ်နေ့ (3) ကြိမ်',p2l:'https://cutt.ly/M9Official',p3t:'Commission',p3d:'အပတ်စဉ်တိုင်း 0.9% ကော်မရှင် များများရယူလိုက်ပါ။',p3l:'https://cutt.ly/M9Official',p4t:'Sunday Bonus',p4d:'Happy Sunday! FREE 50,000 အစီအစဉ်မှာပါဝင်လိုက်ပါ။',p4l:'https://cutt.ly/M9Official',imgbbKey:'73a0a28e099ae8263686986e3afb9a0f',logo:'assets/img-01.jpg',apk1img:'assets/img-02.png',apk2img:'assets/img-03.png',c1i:'assets/img-04.jpg',c1t:'Live Casino',c1d:'Real-time dealer games',c2i:'assets/img-05.jpg',c2t:'Sports Betting',c2d:'Live sports & e-sports',c3i:'assets/img-06.jpg',c3t:'Slot Games',c3d:'Hundreds of premium slots',c4i:'',c4t:'Official & Secure',c4d:'Licensed & trusted platform',promos:[]};
+const DEF={password:'admin123',brand:'M9 Official',ticker:'🟢 M9 Official APP - အခမဲ့ Download လုပ်နိုင်ပါသည် | Android & iOS | Live Casino | Slot Games | Viber & Telegram ဆက်သွယ်ရန် 🟢',footer:'Copyright © 2026 M9 Official | m9asia.com | m9skm.com',badge:'🟢 Official Version Available',hmain:'M9 Official APP',hsub:'Free Download — Latest Version',hdesc:'Android & iOS | m9asia.com | m9skm.com',siteTitle:'M9 Official APP - Free Download',a1t:'📱 m9asia.com Download',a1l:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',a2t:'📲 m9skm.com Download',a2l:'https://www.m9skm.com/down/index.html',iot:'🍎 iOS Install Guide',iol:'https://www.m9asia.com/page/login/downloadBrandApp.jsp',vbt:'💬 Viber ဆက်သွယ်ရန်',vbl:'https://cutt.ly/M9Official',tgt:'✈ Telegram ဆက်သွယ်ရန်',tgl:'http://t.me/M9official_bot',pht:'📞 +95 9400082168',phl:'tel:+959400082168',slides:[],imgbbKey:'73a0a28e099ae8263686986e3afb9a0f',logo:'assets/img-01.jpg',apk1img:'assets/img-02.png',apk2img:'assets/img-03.png',c1i:'assets/img-04.jpg',c1t:'Live Casino',c1d:'Real-time dealer games',c2i:'assets/img-05.jpg',c2t:'Sports Betting',c2d:'Live sports & e-sports',c3i:'assets/img-06.jpg',c3t:'Slot Games',c3d:'Hundreds of premium slots',c4i:'',c4t:'Official & Secure',c4d:'Licensed & trusted platform',promos:[]};
 const BIN_ID='69f2f7ed856a6821898cb404';
 const API_KEY='$2a$10$WIc.ZqHhagvDv5OhDDROAe4sDxmt7V4BM4ct/7t3Uf1hTUOjs0qX2';
 const BIN_URL='https://api.jsonbin.io/v3/b/'+BIN_ID;
 
 let D=Object.assign({},DEF);
 let _saving=false;
-
 let _lastSaveTime=0;
 
 async function ld(){
-  // Step 1: Load from localStorage for instant display
   try{
     const local=localStorage.getItem(KEY);
     if(local){const parsed=JSON.parse(local);if(parsed&&Object.keys(parsed).length>1)D=Object.assign({},DEF,parsed);}
   }catch(e){}
   initPage();
   renderPage();
-  // Step 2: Fetch FRESH from JSONBin FIRST before polling starts
-  // ဒါမှ ဖုန်းမှာ page ဖွင့်ချင်း ပြင်ထားတဲ့ data မြင်ရမယ်
   try{
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});
     if(r.ok){
@@ -437,18 +432,15 @@ async function ld(){
         data.slides=[...serverUrls,...localB64];
         D=Object.assign({},DEF,data);
         localStorage.setItem(KEY,JSON.stringify(D));
-        renderPage(); // Re-render with server data immediately
+        renderPage();
       }
     }
   }catch(e){console.log('Initial fetch failed, using localStorage');}
-  // Step 3: Poll every 30s for live updates
   setInterval(syncFromServer, 30000);
 }
 
 async function syncFromServer(force){
-  // Never overwrite D while admin is logged in (prevents race with unsaved changes)
   if(li) return;
-  // Skip if a save just happened — give JSONBin time to propagate
   if(!force && Date.now()-_lastSaveTime<45000) return;
   try{
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});
@@ -456,18 +448,15 @@ async function syncFromServer(force){
       const j=await r.json();
       const data=j.record;
       if(data&&Object.keys(data).length>1){
-        // Only apply server data if it's newer than local data (using _v timestamp)
         const localV=D._v||0;
         const serverV=data._v||0;
-        if(serverV < localV && localV > 0) return; // Server is behind local — skip
-        // Merge: keep local b64 slides, take server URL slides + other settings
+        if(serverV < localV && localV > 0) return;
         const localData=JSON.parse(localStorage.getItem(KEY)||'{}');
         const localB64=(localData.slides||[]).filter(s=>s&&s.startsWith('data:'));
         const serverUrls=(data.slides||[]).filter(s=>s&&!s.startsWith('data:'));
         data.slides=[...serverUrls,...localB64];
         D=Object.assign({},DEF,data);
         localStorage.setItem(KEY,JSON.stringify(D));
-        // Sync promos to localStorage too
         if(D.promos && D.promos.length>0) localStorage.setItem(PROMO_KEY, JSON.stringify(D.promos));
         renderPage();
       }
@@ -504,11 +493,13 @@ async function sv(d){
   _saving=false;
   return success;
 }
+
 function tx(id,val){const e=document.getElementById(id);if(e)e.textContent=val;}
 function sb(id,t,h){const e=document.getElementById(id);if(!e)return;if(!e.querySelector('img')){e.textContent=t;}e.href=h;}
 function g(id){return document.getElementById(id)?document.getElementById(id).value:'';}
 function sf(id,val){const e=document.getElementById(id);if(e)e.value=val||'';}
 function flash(id){const e=document.getElementById(id);if(!e)return;e.style.opacity=1;setTimeout(()=>e.style.opacity=0,2200);}
+
 function renderBase(){
   document.title=D.siteTitle;
   tx('nav-brand',D.brand);tx('ticker-text',D.ticker);
@@ -516,7 +507,8 @@ function renderBase(){
   if(ft){ft.innerHTML=D.footer||ft.innerHTML;}
 }
 function setImg(id,src){const e=document.getElementById(id); if(e && src) e.src=src;}
-// admin
+
+// Admin
 let li=false;
 function setJbStatus(ok,msg){
   const s=document.getElementById('jb-status');
@@ -525,6 +517,7 @@ function setJbStatus(ok,msg){
   s.style.background=ok?'#d4edda':'#f8d7da';
   s.style.color=ok?'#155724':'#721c24';
 }
+
 async function testJbConnection(){
   setJbStatus(null,'🔄 Connecting...');
   document.getElementById('jb-status').style.background='#fff3cd';
@@ -532,7 +525,6 @@ async function testJbConnection(){
   try{
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});
     if(r.ok){
-      const j=await r.json();
       setJbStatus(true,'✅ Connected to JSONBin');
     } else {
       const txt=await r.text();
@@ -542,44 +534,42 @@ async function testJbConnection(){
     setJbStatus(false,'❌ '+e.message);
   }
 }
+
 function openAdmin(){
   document.getElementById('ao').classList.add('open');
-  // Always show password screen every open — ဖွင့်တိုင်း password မေးမယ်
   document.getElementById('alog').style.display='block';
   document.getElementById('acnt').classList.remove('vis');
   document.getElementById('apw').value='';
   document.getElementById('aerr').textContent='';
   setTimeout(()=>document.getElementById('apw').focus(),80);
-  testJbConnection(); // Auto-test on open
+  testJbConnection();
 }
+
 function closeAdmin(){
   document.getElementById('ao').classList.remove('open');
-  // li ကို မထိ — session ကို ထိန်းထားမယ်
-  // ဒါမှ syncFromServer က old password ပြန် overwrite မလုပ်နိုင်ဘူး
   document.getElementById('apw').value='';
   document.getElementById('aerr').textContent='';
 }
 document.getElementById('ao').addEventListener('click',function(e){if(e.target===this)closeAdmin();});
+
 async function doLogin(){
   const pw=document.getElementById('apw').value;
   if(!pw){document.getElementById('aerr').textContent='❌ Password ထည့်ပါ';return;}
   document.getElementById('aerr').textContent='⏳ စစ်ဆေးနေသည်...';
   let serverPw=null;
   try{
-    // Always fetch FRESH password from JSONBin — never rely on cached D
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});
     if(r.ok){
       const j=await r.json();
       if(j.record&&j.record.password) {
         serverPw=j.record.password;
-        // Update local D with fresh server data
         D=Object.assign({},DEF,j.record);
         localStorage.setItem(KEY,JSON.stringify(D));
         renderPage();
       }
     }
   }catch(e){console.log('JSONBin offline, using local password');}
-  // Check against server password first, fallback to local
+  
   const emergencyPw = 'admin123';
   const correctPw = serverPw || D.password;
   if(pw===correctPw || pw===D.password || pw===emergencyPw){
@@ -593,14 +583,17 @@ async function doLogin(){
     document.getElementById('apw').value='';
   }
 }
+
 function doLogout(){
-  li=false; // တမင် Logout မှ session ပြတ်မယ်
+  li=false;
   document.getElementById('apw').value='';
   document.getElementById('acnt').classList.remove('vis');
   document.getElementById('alog').style.display='block';
   closeAdmin();
 }
+
 function stab(n,btn){document.querySelectorAll('.atab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.asec').forEach(s=>s.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-'+n).classList.add('active');if(n==='bnr')loadSlF();if(n==='prm')renderPromoAdminList();}
+
 function loadSlF(){
   const c=document.getElementById('slide-fields');if(!c)return;c.innerHTML='';
   D.slides.forEach((url,i)=>{
@@ -612,13 +605,14 @@ function loadSlF(){
     }
   });
 }
+
 function addSlideUrl(){D.slides.push('');loadSlF();
   setTimeout(()=>{const inputs=document.querySelectorAll('.si input');if(inputs.length)inputs[inputs.length-1].focus();},50);
 }
 function addSlide(){addSlideUrl();}
 function delSlide(i){D.slides.splice(i,1);loadSlF();}
+
 async function uploadToImgbb(base64Data){
-  // Remove data:image/jpeg;base64, prefix
   const b64=base64Data.split(',')[1];
   const fd=new FormData();
   fd.append('key',D.imgbbKey);
@@ -626,7 +620,7 @@ async function uploadToImgbb(base64Data){
   const r=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:fd});
   if(!r.ok) throw new Error('imgbb upload failed: '+r.status);
   const j=await r.json();
-  return j.data.url; // direct image URL
+  return j.data.url;
 }
 
 function handleUpload(e){
@@ -647,7 +641,6 @@ function handleUpload(e){
         ctx.drawImage(img,0,0,canvas.width,canvas.height);
         const compressed=canvas.toDataURL('image/jpeg',0.75);
         if(D.imgbbKey){
-          // Upload to imgbb → get URL → store URL (works on all devices!)
           try{
             setJbStatus(null,'⏳ Uploading image...');
             document.getElementById('jb-status').style.background='#fff3cd';
@@ -663,7 +656,6 @@ function handleUpload(e){
           }catch(err){
             console.error('imgbb error:',err);
             setJbStatus(false,'❌ imgbb upload failed');
-            // Fallback: store as base64 locally
             D.slides.push(compressed);
             done++;
             if(done===fls.length){
@@ -672,7 +664,6 @@ function handleUpload(e){
             }
           }
         } else {
-          // No imgbb key: store as base64 (local device only)
           D.slides.push(compressed);
           done++;
           if(done===fls.length){
@@ -692,8 +683,10 @@ function handleUpload(e){
   });
   e.target.value='';
 }
+
 async function saveGen(){D.siteTitle=g('f-stitle')||D.siteTitle;D.brand=g('f-brand')||D.brand;D.ticker=g('f-ticker');D.badge=g('f-badge');D.hmain=g('f-hmain');D.hsub=g('f-hsub');D.hdesc=g('f-hdesc');D.footer=g('f-footer');D.imgbbKey=g('f-imgbb');const ok=await sv(D);renderPage();flash('st-gen');if(ok) setJbStatus(true,'✅ General settings saved');}
 async function saveLnk(){D.a1t=g('f-a1t');D.a1l=g('f-a1l');D.a2t=g('f-a2t');D.a2l=g('f-a2l');D.iot=g('f-iot');D.iol=g('f-iol');D.io2t=g('f-io2t');D.io2l=g('f-io2l');D.vbt=g('f-vbt');D.vbl=g('f-vbl');D.tgt=g('f-tgt');D.tgl=g('f-tgl');D.pht=g('f-pht');D.phl=g('f-phl');const ok=await sv(D);renderPage();flash('st-lnk');if(ok) setJbStatus(true,'✅ Links saved');}
+
 async function saveBnr(){
   const newSlides=[];
   D.slides.forEach((url,i)=>{
@@ -701,16 +694,14 @@ async function saveBnr(){
     else{const inp=document.querySelector('.slide-url-input[data-idx="'+i+'"]');newSlides.push(inp?inp.value.trim():url);}
   });
   D.slides=newSlides.filter(Boolean);
-  // Save URLs to JSONBin (small size), base64 to localStorage only
   const urlOnlySlides=D.slides.filter(s=>!s.startsWith('data:'));
-  const b64Slides=D.slides.filter(s=>s.startsWith('data:'));
   const cloudD={...D,slides:urlOnlySlides};
   const ok=await sv(cloudD);
-  // Always save full data (including b64) to localStorage
   localStorage.setItem(KEY,JSON.stringify(D));
   if(ok) setJbStatus(true,'✅ Synced');
   renderPage();flash('st-bnr');
 }
+
 async function changePw(){
   const o=g('f-opw'),n=g('f-npw'),conf=g('f-cpw'),err=document.getElementById('pwerr');
   if(o!==D.password){err.textContent='❌ Current password မှားနေသည်';return;}
@@ -725,12 +716,13 @@ async function changePw(){
     flash('st-pw');
     setJbStatus(true,'✅ Password saved!');
   } else {
-    D.password=o; // revert if save failed
+    D.password=o;
     err.textContent='❌ Server မှာ save မဝင်ဘူး — JSONBin စစ်ပါ';
     setJbStatus(false,'❌ Save failed');
   }
 }
 </script>
+
 <script>
 // Slider
 let si=0,stmr=null;
@@ -745,12 +737,13 @@ function renderSlider(){
 }
 function go(n){document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n));document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n));si=n;}
 
-// Combined renderPage
+// Render Page (Fixed Logo and Image binding)
 function renderPage(){
   renderBase();
   // Home page
   tx('hero-badge',D.badge);tx('hero-main',D.hmain);tx('hero-sub-title',D.hsub);tx('hero-sub',D.hdesc);
-  setImg('hero-logo',D.logo); setImg('apk1-img',D.apk1img); setImg('apk2-img',D.apk2img);
+  setImg('nav-logo',D.logo); setImg('hero-logo',D.logo); 
+  setImg('apk1-img',D.apk1img); setImg('apk2-img',D.apk2img);
   setImg('card1-img',D.c1i); tx('card1-ti',D.c1t); tx('card1-ds',D.c1d);
   setImg('card2-img',D.c2i); tx('card2-ti',D.c2t); tx('card2-ds',D.c2d);
   setImg('card3-img',D.c3i); tx('card3-ti',D.c3t); tx('card3-ds',D.c3d);
@@ -768,6 +761,7 @@ function renderPage(){
   // Promotion page
   renderPromoGrid();
 }
+
 function loadF(){
   sf('f-stitle',D.siteTitle);sf('f-brand',D.brand);sf('f-ticker',D.ticker);sf('f-badge',D.badge);
   sf('f-hmain',D.hmain);sf('f-hsub',D.hsub);sf('f-hdesc',D.hdesc);sf('f-footer',D.footer);
@@ -781,31 +775,42 @@ function loadF(){
   sf('f-vbt',D.vbt);sf('f-vbl',D.vbl);sf('f-tgt',D.tgt);sf('f-tgl',D.tgl);sf('f-pht',D.pht);sf('f-phl',D.phl);
   renderPromoAdminList();
 }
+
+// Fixed Home Page Save Logic
 async function saveHome(){
-  D.logo=g('f-logo'); D.apk1img=g('f-apk1img'); D.apk2img=g('f-apk2img');
-  D.c1i=g('f-c1i'); D.c1t=g('f-c1t'); D.c1d=g('f-c1d');
-  D.c2i=g('f-c2i'); D.c2t=g('f-c2t'); D.c2d=g('f-c2d');
-  D.c3i=g('f-c3i'); D.c3t=g('f-c3t'); D.c3d=g('f-c3d');
-  D.c4t=g('f-c4t'); D.c4d=g('f-c4d');
-  const ok=await sv(D); renderPage(); flash('st-home'); if(ok) setJbStatus(true,'✅ Home settings saved');
+  D.logo = g('f-logo') || D.logo; 
+  D.apk1img = g('f-apk1img') || D.apk1img; 
+  D.apk2img = g('f-apk2img') || D.apk2img;
+  
+  D.c1i = g('f-c1i') || D.c1i; D.c1t = g('f-c1t') || D.c1t; D.c1d = g('f-c1d') || D.c1d;
+  D.c2i = g('f-c2i') || D.c2i; D.c2t = g('f-c2t') || D.c2t; D.c2d = g('f-c2d') || D.c2d;
+  D.c3i = g('f-c3i') || D.c3i; D.c3t = g('f-c3t') || D.c3t; D.c3d = g('f-c3d') || D.c3d;
+  D.c4t = g('f-c4t') || D.c4t; D.c4d = g('f-c4d') || D.c4d;
+
+  const ok = await sv(D);
+  renderPage();
+  flash('st-home');
+  if(ok) setJbStatus(true, '✅ Home settings saved');
 }
 </script>
+
 <script>
 // Promotion system
 const DEFAULT_PROMOS = [{"tag": "WELCOME BONUS", "title": "Welcome Bonus 100%", "desc": "မန်ဘာသစ်များအတွက် First Deposit 200% Bonus ရယူနိုင်ပါသည်။", "link": "https://cutt.ly/M9Official", "img": "assets/img-11.jpg"}, {"tag": "DAILY BONUS", "title": "Daily Reload Bonus", "desc": "နေ့တိုင်း ငွေသွင်းပြီး နေ့စဉ်ဘောနပ် ရယူနိုင်ပါသည်။ တစ်နေ့ (3) ကြိမ်", "link": "https://cutt.ly/M9Official", "img": "assets/img-12.jpg"}, {"tag": "COMMISSION", "title": "Commission", "desc": "အပတ်စဉ်တိုင်း 0.9% ကော်မရှင် များများရယူလိုက်ပါ။", "link": "https://cutt.ly/M9Official", "img": "assets/img-13.jpg"}, {"tag": "SUNDAY BONUS", "title": "Sunday Bonus", "desc": "Happy Sunday! FREE 50,000 အစီအစဉ်မှာပါဝင်လိုက်ပါ။", "link": "https://cutt.ly/M9Official", "img": "assets/img-14.jpg"}];
 const PROMO_KEY = 'm9_promos';
+
 function getPromos(){
-  // Priority: D.promos (from JSONBin) > localStorage > DEFAULT_PROMOS
   if(D.promos && D.promos.length > 0) return JSON.parse(JSON.stringify(D.promos));
   try{ const r=localStorage.getItem(PROMO_KEY); return r?JSON.parse(r):JSON.parse(JSON.stringify(DEFAULT_PROMOS)); }
   catch(e){ return JSON.parse(JSON.stringify(DEFAULT_PROMOS)); }
 }
+
 function savePromos(arr){
   localStorage.setItem(PROMO_KEY, JSON.stringify(arr));
-  // Also sync to JSONBin so all devices see updates
   D.promos = arr;
   sv(D);
 }
+
 function renderPromoGrid(){
   const grid = document.getElementById('promo-grid');
   if(!grid) return;
@@ -828,6 +833,7 @@ function renderPromoGrid(){
     grid.appendChild(card);
   });
 }
+
 function renderPromoAdminList(){
   const container = document.getElementById('promo-admin-list');
   if(!container) return;
@@ -856,6 +862,7 @@ function renderPromoAdminList(){
     container.appendChild(div);
   });
 }
+
 function addPromo(){
   const promos = getPromos();
   promos.push({tag:'NEW PROMO',title:'Promotion အသစ်',desc:'Description ထည့်ပါ',link:'https://cutt.ly/M9Official',img:''});
@@ -863,6 +870,7 @@ function addPromo(){
   renderPromoAdminList();
   renderPromoGrid();
 }
+
 function deletePromo(i){
   if(!confirm('ဤ Promotion ကို ဖျက်မည်လား?')) return;
   const promos = getPromos();
@@ -871,6 +879,7 @@ function deletePromo(i){
   renderPromoAdminList();
   renderPromoGrid();
 }
+
 function saveAllPromo(){
   const promos = getPromos();
   promos.forEach((p,i) => {
@@ -887,6 +896,7 @@ function saveAllPromo(){
   renderPromoGrid();
   flash('st-prm');
 }
+
 function uploadPromoImg(e, i){
   const file = e.target.files[0]; if(!file) return;
   const reader = new FileReader();
@@ -913,6 +923,8 @@ function uploadPromoImg(e, i){
   reader.readAsDataURL(file);
   e.target.value = '';
 }
+
 ld();
 </script>
-</body></html>
+</body>
+</html>
