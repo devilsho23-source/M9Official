@@ -731,7 +731,7 @@ function renderSlider(){
   if(!wrap)return;
   wrap.querySelectorAll('.slide').forEach(s=>s.remove());dots.innerHTML='';
   const sls=D.slides.filter(s=>s.trim());
-  if(!sls.length){const ph=document.createElement('div');ph.className='slide active';ph.innerHTML='<div class="slide-ph">🎰 M9 Official Banner<br><small>Admin → Banner မှ image URL ထည့်ပါ</small></div>';wrap.insertBefore(ph,dots);return;}
+  if(!sls.length){const ph=document.createElement('div');ph.className='slide active';ph.innerHTML='<div class="slide-ph"> M9 Official Banner</div>';wrap.insertBefore(ph,dots);return;}
   sls.forEach((url,i)=>{const sl=document.createElement('div');sl.className='slide'+(i===0?' active':'');sl.innerHTML=`<img loading="lazy" decoding="async" src="${url}" alt="Banner ${i+1}" onerror="this.parentElement.innerHTML='<div class=slide-ph>🖼 Image မတွေ့ပါ</div>'">`;wrap.insertBefore(sl,dots);const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>go(i);dots.appendChild(d);});
   si=0;clearInterval(stmr);if(sls.length>1)stmr=setInterval(()=>go((si+1)%sls.length),4500);
 }
@@ -796,7 +796,7 @@ async function saveHome(){
 
 <script>
 // Promotion system
-const DEFAULT_PROMOS = [{"tag": "WELCOME BONUS", "title": "Welcome Bonus 100%", "desc": "မန်ဘာသစ်များအတွက် First Deposit 200% Bonus ရယူနိုင်ပါသည်။", "link": "https://cutt.ly/M9Official", "img": "assets/img-11.jpg"}, {"tag": "DAILY BONUS", "title": "Daily Reload Bonus", "desc": "နေ့တိုင်း ငွေသွင်းပြီး နေ့စဉ်ဘောနပ် ရယူနိုင်ပါသည်။ တစ်နေ့ (3) ကြိမ်", "link": "https://cutt.ly/M9Official", "img": "assets/img-12.jpg"}, {"tag": "COMMISSION", "title": "Commission", "desc": "အပတ်စဉ်တိုင်း 0.9% ကော်မရှင် များများရယူလိုက်ပါ။", "link": "https://cutt.ly/M9Official", "img": "assets/img-13.jpg"}, {"tag": "SUNDAY BONUS", "title": "Sunday Bonus", "desc": "Happy Sunday! FREE 50,000 အစီအစဉ်မှာပါဝင်လိုက်ပါ။", "link": "https://cutt.ly/M9Official", "img": "assets/img-14.jpg"}];
+const DEFAULT_PROMOS = [{"tag": "WELCOME BONUS", "title": "Welcome Bonus 200%", "desc": "မန်ဘာသစ်များအတွက် First Deposit 200% Bonus ရယူနိုင်ပါသည်။", "link": "https://cutt.ly/M9Official", "img": "assets/img-11.jpg"}, {"tag": "DAILY BONUS", "title": "Daily Bonus", "desc": "နေ့တိုင်း ငွေသွင်းပြီး နေ့စဉ်ဘောနပ် ရယူနိုင်ပါသည်။ တစ်နေ့ (3) ကြိမ်", "link": "https://cutt.ly/M9Official", "img": "assets/img-12.jpg"}, {"tag": "COMMISSION", "title": "Commission", "desc": "အပတ်စဉ်တိုင်း 0.9% ကော်မရှင် များများရယူလိုက်ပါ။", "link": "https://cutt.ly/M9Official", "img": "assets/img-13.jpg"}, {"tag": "SUNDAY BONUS", "title": "Sunday Bonus", "desc": "Happy Sunday! FREE 50,000 အစီအစဉ်မှာပါဝင်လိုက်ပါ။", "link": "https://cutt.ly/M9Official", "img": "assets/img-14.jpg"}];
 const PROMO_KEY = 'm9_promos';
 
 function getPromos(){
